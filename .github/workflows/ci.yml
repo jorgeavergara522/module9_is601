@@ -43,5 +43,4 @@ jobs:
 
       - name: Run module 10 tests
         run: |
-          pytest -q tests/test_security.py tests/test_schemas.py tests/test_user_endpoints.py -p no:cov
-
+          pytest -q tests/test_security.py tests/test_schemas.py tests/test_user_endpoints.py -o addopts="" -p no:cov
