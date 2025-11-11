@@ -25,6 +25,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/fastapi_db
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
       - name: Checkout repo
@@ -51,8 +52,12 @@ jobs:
       - name: Initialize DB schema (create tables)
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           python - <<'PY'
+          import sys, pathlib
+          # ensure repository root is on sys.path so "app" can be imported
+          sys.path.insert(0, str(pathlib.Path().resolve()))
           from app.database.database import init_db
           init_db()
           print("DB initialized.")
