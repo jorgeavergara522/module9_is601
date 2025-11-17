@@ -39,5 +39,5 @@ def init_db():
     """
     Initialize database - create all tables.
     """
-    from app.database.models import User
+    from app.database.models import User, Calculation
     Base.metadata.create_all(bind=engine)
