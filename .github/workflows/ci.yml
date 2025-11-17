@@ -1,4 +1,4 @@
-name: CI - Module 10 Tests
+name: CI - Module 11 Tests
 
 on:
   push:
@@ -65,7 +65,7 @@ jobs:
           print("DB initialized.")
           PY
 
-      - name: Run module 10 tests
+      - name: Run module 11 tests
         run: |
           pytest -q tests/test_security.py tests/test_schemas.py tests/test_user_endpoints.py -o addopts="" -p no:cov
 
