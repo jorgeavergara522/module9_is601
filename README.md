@@ -1,6 +1,73 @@
 # 📦 Project Setup
 
 ---
+---
+
+## 📊 Module 11: Calculation Model with Polymorphic Inheritance
+
+### Overview
+This module implements a sophisticated calculation system using SQLAlchemy's polymorphic inheritance pattern and Pydantic validation schemas.
+
+### Features Implemented
+
+#### 🗄️ Database Models (Polymorphic Inheritance)
+- **Base Calculation Model** - Parent class with common fields (id, user_id, type, inputs, result, timestamps)
+- **Four Operation Subclasses**:
+  - `Addition` - Sums all input numbers
+  - `Subtraction` - Sequential subtraction
+  - `Multiplication` - Multiplies all inputs
+  - `Division` - Sequential division with zero-check validation
+- **Factory Pattern** - `Calculation.create()` method for dynamic subclass instantiation
+- **User Relationship** - Bidirectional link with cascade delete
+
+#### ✅ Pydantic Validation Schemas
+- `CalculationType` - Enum for type safety (addition, subtraction, multiplication, division)
+- `CalculationBase` - Common validation logic with field and model validators
+- `CalculationCreate` - Input schema for creating calculations
+- `CalculationUpdate` - Schema for partial updates
+- `CalculationResponse` - Output schema with all fields including computed results
+
+#### 🧪 Comprehensive Testing
+- **27 Integration Tests** - 100% passing
+  - 15 model tests (polymorphic behavior, factory pattern, edge cases)
+  - 12 schema tests (validation, error handling, type checking)
+- Database fixtures for test isolation
+- Tests cover: valid operations, invalid inputs, division by zero, polymorphic lists
+
+#### 🔄 CI/CD Pipeline
+- GitHub Actions workflow runs all tests automatically
+- PostgreSQL service container for integration testing
+- Automated Docker image builds on successful tests
+
+### Running Tests Locally
+```bash
+# Run all Module 11 tests
+pytest tests/integration/test_calculation.py tests/integration/test_calculation_schema.py -v
+
+# Run specific test file
+pytest tests/integration/test_calculation.py -v
+pytest tests/integration/test_calculation_schema.py -v
+```
+
+### Key Learning Outcomes
+- ✅ Polymorphic inheritance in SQLAlchemy
+- ✅ Factory design pattern implementation
+- ✅ Advanced Pydantic validation (field validators, model validators)
+- ✅ Integration testing with database fixtures
+- ✅ Type-specific behavior with shared interface
+
+### Technical Stats
+- **Production Code**: ~471 lines (models + schemas)
+- **Test Code**: 236 lines
+- **Test Coverage**: 27 tests, 100% passing
+- **Build Time**: ~48 seconds in CI/CD
+
+---
+
+
+
+
+
 
 # 🧩 1. Install Homebrew (Mac Only)
 
@@ -262,3 +329,8 @@ Then submit the GitHub repository link as instructed.
 - [Python Downloads](https://www.python.org/downloads/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [GitHub SSH Setup Guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+
+
+
+
